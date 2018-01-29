@@ -101,9 +101,11 @@ fileprivate final class GJTableViewSortedListDataSource: NSObject, UITableViewDa
             cell = deqcell
         }
 
-        if self.sortedlist.count > indexPath.row {
+        if self.sortedlist.count > indexPath.section && self.sortedlist[indexPath.section].count > indexPath.row {
             cell.textLabel?.text = self.sortedlist[indexPath.section][indexPath.row].name
             cell.detailTextLabel?.text = ""
+        } else {
+            print("index path outside allowed range")
         }
 
         return cell
